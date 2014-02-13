@@ -7,7 +7,7 @@ class FavoritesController < ApplicationController
   def create
     favorite = Favorite.new(
       gist_id: params[:gist_id],
-      owner_id: current_user.id
+      user_id: current_user.id
     )
 
     if favorite.save
@@ -23,8 +23,8 @@ class FavoritesController < ApplicationController
       current_user.id
     )
 
-    favorite.destroy!
-    render nil
+    favorite.destroy
+    render json: nil
   end
 
 end

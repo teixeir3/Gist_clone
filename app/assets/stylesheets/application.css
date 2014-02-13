@@ -11,3 +11,26 @@
  *= require_self
  *= require_tree .
  */
+
+.favorite-button{
+  display:inline-block;
+}
+
+/* default UNFAVORITED state */
+.add-favorite{
+  display:inline-block;
+}
+
+.remove-favorite{
+  display:none;
+}
+
+/* modified ALREADY-FAVORITED state */
+
+.already-favorited > .add-favorite{
+  display:none;
+}
+
+.already-favorited > .remove-favorite{
+  display:inline-block;
+}

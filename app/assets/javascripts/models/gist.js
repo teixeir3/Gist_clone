@@ -12,5 +12,11 @@ Gisticle.Models.Gist = Backbone.Model.extend({
     };
 
     return modelAttributes;
+  },
+
+  toJSON: function () {
+    var modifiedAttributes = _.extend({}, this.attributes);
+    delete modifiedAttributes.favorite;
+    return modifiedAttributes;
   }
 });
