@@ -5,7 +5,8 @@ Gisticle.Routers.Gists = Backbone.Router.extend({
   },
 
   routes: {
-    "": "index"
+    "": "index",
+    "gists/new": "form"
   },
 
   index: function () {
@@ -15,8 +16,16 @@ Gisticle.Routers.Gists = Backbone.Router.extend({
     this._swapView(view);
   },
 
+  form: function() {
+    console.log("in router form action");
+    var view = new Gisticle.Views.GistForm({
+      collection: this.collection
+    });
+    this._swapView(view);
+  },
+
   _swapView: function (newView) {
-    this._currentView && this._currentView.empty();
+    this._currentView && this._currentView.leave();
     this._currentView = newView;
     this.element.html(newView.render().$el);
   }

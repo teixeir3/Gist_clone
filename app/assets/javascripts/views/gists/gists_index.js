@@ -12,6 +12,7 @@ Gisticle.Views.GistsIndex = Backbone.View.extend({
     this.$el.html(content);
 
     var that = this;
+    console.log(this.collection);
     this.collection.each(function (model) {
       var view = new Gisticle.Views.GistListItem({
         model: model
