@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
 
   has_many(
     :favorites,
-    class_name: "Favorites",
+    class_name: "Favorite",
     foreign_key: :owner_id,
     primary_key: :id
   )

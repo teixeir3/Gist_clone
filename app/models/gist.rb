@@ -33,22 +33,25 @@ class Gist < ActiveRecord::Base
       gist.title self.title
       gist.owner_id self.owner_id
       # gist.favorite true
-      gist.favorites do |favorite|
+      if self.favorites.empty?
+        gist.favorite nil
+      else
+        gist.favorite self.favorites.map(&:to_builder).map(&:target!)
 
-        if self.favorites.empty?
-          favorite.nil!
-        else
-
-          self.favorites do |current_favorite|
-            next unless current_favorite.gist_id == self.id
-            current_favorite.to_builder
-          end
-
-        end
-
+        # gist.array! self.favorites do |favorite|
+        #   next unless favorite.gist_id == self.id
+        #   favorite (self.favorites, :id, :owner_id, :gist_id)
+        #   # favorite.id favorite.id
+        #   # favorite.owner_id favorite.user_id
+        #   # favorite.gist_id favorite.gist_id
+        # end
       end
-
+      #   gist.favorites do |favorite|
+      #     # self.favorites do |current_favorite|
+      #       # next unless current_favorite.gist_id == self.id
+      #       favorite.to_builder
+      #     # end
+      #   end
     end
-
   end
 end

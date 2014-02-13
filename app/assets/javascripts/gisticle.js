@@ -8,7 +8,6 @@ window.Gisticle = {
 
     new Gisticle.Collections.Gists().fetch({
       success: function(collection) {
-        console.log(collection);
         new Gisticle.Routers.Gists({
           collection: collection,
           element: element
