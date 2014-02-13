@@ -12,7 +12,6 @@ window.Gisticle = {
         new Gisticle.Routers.Gists({
           collection: collection,
           element: element
-          // ^ POTENTIAL ERROR?
         })
         Backbone.history.start();
       },

@@ -16,6 +16,19 @@ class User < ActiveRecord::Base
     primary_key: :id
   )
 
+  has_many(
+    :favorites,
+    class_name: "Favorites",
+    foreign_key: :owner_id,
+    primary_key: :id
+  )
+
+  has_many(
+    :favorite_gists,
+    through: :favorites,
+    source: :gist
+  )
+
   def self.find_by_credentials(username, password)
     user = User.find_by_username(username)
     user.try(:is_password?, password) ? user : nil
