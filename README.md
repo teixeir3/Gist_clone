@@ -1,4 +1,4 @@
-# NewAuthDemo
+# Gisticle
 
 * [app/models/user.rb](./app/models/user.rb)
 * [app/controllers/sessions_controller.rb](./app/controllers/sessions_controller.rb)

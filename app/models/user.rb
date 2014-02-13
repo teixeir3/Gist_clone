@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessible :username, :password
+  attr_accessible :username, :password, :gists
   attr_reader :password
 
   validates :password_digest, :presence => true
@@ -8,6 +8,13 @@ class User < ActiveRecord::Base
   validates :username, :presence => true, :uniqueness => true
 
   before_validation :ensure_session_token
+
+  has_many(
+    :gists,
+    class_name: "Gist",
+    foreign_key: :owner_id,
+    primary_key: :id
+  )
 
   def self.find_by_credentials(username, password)
     user = User.find_by_username(username)
